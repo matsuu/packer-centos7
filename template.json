@@ -1,4 +1,10 @@
 {
+  "variables": {
+    "arch": "x86_64",
+    "iso_checksum": "e5a2c3c6d245b17e8d6ae2c31d2f34b62c273a0e",
+    "monthstamp": "1406",
+    "version": "7.0"
+  },
   "provisioners": [
     {
       "type": "shell",
@@ -28,10 +34,10 @@
       "type": "vagrant",
       "override": {
         "virtualbox": {
-          "output": "centos-7-0-x64-virtualbox.box"
+          "output": "centos-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-virtualbox.box"
         },
         "vmware": {
-          "output": "centos-7-0-x64-vmware.box"
+          "output": "centos-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-vmware.box"
         }
       }
     }
@@ -44,9 +50,14 @@
       ],
       "guest_os_type": "RedHat_64",
       "http_directory": "http",
-      "iso_checksum": "e5a2c3c6d245b17e8d6ae2c31d2f34b62c273a0e",
+      "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "sha1",
-      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7/isos/x86_64/CentOS-7.0-1406-x86_64-NetInstall.iso",
+      "iso_urls": [
+        "http://ftp.iij.ad.jp/pub/linux/centos/{{user `version`}}.{{user `monthstamp`}}/isos/{{user `arch`}}/CentOS-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-NetInstall.iso",
+        "http://ftp.jaist.ac.jp/pub/Linux/CentOS/{{user `version`}}.{{user `monthstamp`}}/isos/{{user `arch`}}/CentOS-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-NetInstall.iso",
+        "http://ftp.riken.jp/Linux/centos/{{user `version`}}.{{user `monthstamp`}}/isos/{{user `arch`}}/CentOS-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-NetInstall.iso",
+        "http://ftp.tsukuba.wide.ad.jp/Linux/centos/{{user `version`}}.{{user `monthstamp`}}/isos/{{user `arch`}}/CentOS-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-NetInstall.iso"
+      ],
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
@@ -64,9 +75,14 @@
       ],
       "guest_os_type": "centos-64",
       "http_directory": "http",
-      "iso_checksum": "e5a2c3c6d245b17e8d6ae2c31d2f34b62c273a0e",
+      "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "sha1",
-      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7/isos/x86_64/CentOS-7.0-1406-x86_64-NetInstall.iso",
+      "iso_urls": [
+        "http://ftp.iij.ad.jp/pub/linux/centos/{{user `version`}}.{{user `monthstamp`}}/isos/{{user `arch`}}/CentOS-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-NetInstall.iso",
+        "http://ftp.jaist.ac.jp/pub/Linux/CentOS/{{user `version`}}.{{user `monthstamp`}}/isos/{{user `arch`}}/CentOS-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-NetInstall.iso",
+        "http://ftp.riken.jp/Linux/centos/{{user `version`}}.{{user `monthstamp`}}/isos/{{user `arch`}}/CentOS-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-NetInstall.iso",
+        "http://ftp.tsukuba.wide.ad.jp/Linux/centos/{{user `version`}}.{{user `monthstamp`}}/isos/{{user `arch`}}/CentOS-{{user `version`}}-{{user `monthstamp`}}-{{user `arch`}}-NetInstall.iso"
+      ],
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
